@@ -17,14 +17,18 @@
                     <div class="form-group">
                         {!! Form::label('title', 'Title', ['class' => 'col-lg-2 control-label']) !!}
                         <div class="col-lg-10">
-                            {!! Form::text('title', null, ['class' => 'form-control', 'id' => 'title', 'placeholder'=>'Title']) !!}
+                            {!! Form::text('title', $ticket->title, ['class' => 'form-control', 'id' => 'title', 'placeholder'=>'Title']) !!}
                         </div>
                     </div>
                     <div class="form-group">
                         {!! Form::label('content', 'Content', ['class' => 'col-lg-2 control-label']) !!}
                         <div class="col-lg-10">
-                            {!! Form::textarea('content', null, ['class' => 'form-control', 'rows' => 3, 'placeholder' => 'Input Content']) !!}
+                            {!! Form::textarea('content', $ticket->content, ['class' => 'form-control', 'rows' => 3, 'placeholder' => 'Input Content']) !!}
                         </div>
+                    </div>
+                    <div class="form-group">
+                            {{-- <input type="checkbox" name="status" {!! $ticket->status?"":"checked"!!} > Close this ticket? --}}
+                            {!! Form::checkbox('status', $ticket->status, $ticket->status ? '' : 'checked') !!} Close this ticket
                     </div>
                     <div class="form-group">
                         <div class="col-lg-10 col-lg-offset-2">
