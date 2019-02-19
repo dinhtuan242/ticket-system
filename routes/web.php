@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +21,4 @@ Route::get('/ticket/{slug?}', 'TicketsController@show')->name('show');
 Route::get('/ticket/{slug?}/edit', 'TicketsController@edit')->name('getEdit');
 Route::post('/ticket/{slug?}/edit','TicketsController@update')->name('postEdit');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy')->name('postDelete');
+Route::post('/comment', 'CommentsController@newComment');

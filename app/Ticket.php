@@ -16,4 +16,9 @@ class Ticket extends Model
     protected $hidden = [
         'id'
     ];
+    
+    public function comments()
+    {
+        return $this->hasMany('App\Comment', 'post_id');
+    }
 }
