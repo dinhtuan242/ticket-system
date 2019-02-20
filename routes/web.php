@@ -22,3 +22,15 @@ Route::get('/ticket/{slug?}/edit', 'TicketsController@edit')->name('getEdit');
 Route::post('/ticket/{slug?}/edit','TicketsController@update')->name('postEdit');
 Route::post('/ticket/{slug?}/delete','TicketsController@destroy')->name('postDelete');
 Route::post('/comment', 'CommentsController@newComment');
+Route::get('/users/register', 'Auth\RegisterController@showRegistrationForm');
+Route::post('/users/register', 'Auth\RegisterController@register');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users/logout', 'Auth\LoginController@logout');
+Route::get('/users/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/users/login', 'Auth\LoginController@login')->name('login');
+Route::group(array('prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => 'auth'), function () {
+    Route::get('users', 'UsersController@index');
+});
